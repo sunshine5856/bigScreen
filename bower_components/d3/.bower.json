@@ -1,0 +1,16 @@
+{
+  "name": "d3",
+  "version": "3.0.0",
+  "main": "./d3.js",
+  "homepage": "https://github.com/mbostock-bower/d3-bower",
+  "_release": "3.0.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v3.0.0",
+    "commit": "2d7eb629be5253b48b6a537a57bd614f038a3e3b"
+  },
+  "_source": "https://github.com/mbostock-bower/d3-bower.git",
+  "_target": "3.0.0",
+  "_originalSource": "d3",
+  "_direct": true
+}

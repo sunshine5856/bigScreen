@@ -1,0 +1,375 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>政务大数据分析平台</title>
+    <link href="css/common.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/home.css"/>
+    <link href="./bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="./bower_components/font_icon/iconfont.css" type="text/css"/>
+</head>
+<style>
+
+    table {
+        width: 100%;
+    }
+
+    .layui-layer-iframe .layui-layer-content {
+        background-color: #212432;
+    }
+
+    .chooseCharts {
+        color: #00BFB7;
+        font-size: 14px;
+        width: 120px;
+        height: 30px;
+        background-color: rgba(0, 0, 0, 0);
+        /*padding:4px 8px;*/
+        border: none;
+    }
+
+    .chooseCharts:hover {
+        color: #e1e1e1;
+        border: 1px solid rgba(28, 109, 173, 0.6);
+    }
+</style>
+<body>
+<!--导航内容-->
+<div class="container">
+    <nav class="navbar navbar-default"
+         style="position:absolute;background-color: rgba(0,0,0,0);z-index:30;border:none;text-align: center;margin:0 auto;  ">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class=" item-left current ">
+                    <a class="item-a-left active" href="index_a.html">
+                        审批系统
+                    </a>
+                </li>
+                <li class=" item-left">
+                    <a class="item-a-left" href="index_b.html">证照系统</a>
+                </li>
+                <li>
+                    <a href="index.html" style="padding-top:0;margin-top:0;">
+                        <img src="./css/img/logo.png" alt="" style="width: 500px;height:70px;top: 15%;">
+                    </a>
+                </li>
+                <li class=" item-right">
+                    <a class="item-a-right" href="index_c.html">政务门户</a>
+                </li>
+                <li class=" item-right">
+                    <a class="item-a-right" href="index_d.html">其他系统</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<div class="header">
+    <!--导航背景图-->
+    <!--画图区-->
+    <div class="row main-content" id="progress"
+         style="margin:0;position: absolute;z-index: 20;width:100%;height:1000px; ">
+        <!--左侧，饼图，折线图-->
+        <div class="col-md-3 col-sm-3">
+            <!--饼图-->
+            <div class="photo-box">
+                <div class="photo-title-box">
+                    <table>
+                        <tr>
+                            <td>
+                                <p class="photo-title">数据流量</p>
+                            </td>
+                            <td style="text-align:right;display:none;">
+                                <button class="chooseCharts"
+                                        onclick="chooseCharts('添加接口','admin-interface-add.html','650','800')">
+                                    请选择图表类型
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="photo-platform" id="left-one" style="height:200px;"></div>
+            </div>
+            <!--折线面积图-->
+            <div class="photo-box" style="margin-top:15px;">
+                <div class="photo-title-box">
+                    <table>
+                        <tr>
+                            <td>
+                                <p class="photo-title">审计信息</p>
+                            </td>
+                            <td style="text-align:right;display:none;">
+                                <button class="chooseCharts"
+                                        onclick="chooseCharts('添加接口','admin-interface-add.html','650','800')">
+                                    请选择图表类型
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="photo-platform" id="left-two"></div>
+            </div>
+            <!--分类饼图-->
+            <div class="photo-box" style="margin-top:15px;">
+                <div class="photo-title-box">
+                    <table>
+                        <tr>
+                            <td>
+                                <p class="photo-title">办件信息</p>
+                            </td>
+                            <td style="text-align:right;display:none;">
+                                <button class="chooseCharts"
+                                        onclick="chooseCharts('添加接口','admin-interface-add.html','650','800')">
+                                    请选择图表类型
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="photo-platform" id="left-three"></div>
+            </div>
+        </div>
+        <!--中间，中国地图-->
+        <div class="col-md-6 col-sm-6">
+            <div class="photo-box">
+                <div class="photo-title-box">
+                    <table>
+                        <tr>
+                            <td>
+                                <p class="photo-title">实时报道</p>
+                            </td>
+                            <td style="text-align:right;display:none;">
+                                <button class="chooseCharts"
+                                        onclick="chooseCharts('添加接口','admin-interface-add.html','650','800')">
+                                    请选择图表类型
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="china-map" id="map"
+                             style="height:443px;"></div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="china-map" id="map_one" style="height:443px;"></div>
+                    </div>
+                </div>
+            </div>
+            <!--折柱图-->
+            <div class="photo-box" style="margin-top:15px;">
+                <div class="photo-title-box">
+                    <table>
+                        <tr>
+                            <td>
+                                <p class="photo-title">接口统计</p>
+                            </td>
+                            <td style="text-align:right;display:none; ">
+                                <button class="chooseCharts"
+                                        onclick="chooseCharts('添加接口','admin-interface-add.html','650','800')">
+                                    请选择图表类型
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="photo-platform" id="bottom-one" style="height:260px;"></div>
+            </div>
+        </div>
+        <!--右侧，水球图,柱状图-->
+        <div class="col-md-3 col-sm-6">
+            <!--水球图-->
+            <div class="photo-box">
+                <div class="photo-title-box">
+                    <table>
+                        <tr>
+                            <td>
+                                <p class="photo-title">接件信息</p>
+                            </td>
+                            <td style="text-align:right;display:none;">
+                                <button class="chooseCharts"
+                                        onclick="chooseCharts('添加接口','admin-interface-add.html','650','800')">
+                                    请选择图表类型
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="photo-platform" id="right-one" style="height:200px;"></div>
+            </div>
+            <!--柱状图-->
+            <div class="photo-box" style="margin-top:15px;">
+                <div class="photo-title-box">
+                    <table>
+                        <tr>
+                            <td>
+                                <p class="photo-title">办件信息</p>
+                            </td>
+                            <td style="text-align:right;display:none;">
+                                <button class="chooseCharts"
+                                        onclick="chooseCharts('添加接口','admin-interface-add.html','650','800')">
+                                    请选择图表类型
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="photo-platform" id="right-two"></div>
+            </div>
+            <!--柱状图-->
+            <div class="photo-box" style="margin-top:15px;">
+                <div class="photo-title-box">
+                    <table>
+                        <tr>
+                            <td>
+                                <p class="photo-title">实时数据</p>
+                            </td>
+                            <td style="text-align:right;display:none;">
+                                <button class="chooseCharts"
+                                        onclick="chooseCharts('添加接口','admin-interface-add.html','650','800')">
+                                    请选择图表类型
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="photo-platform" id="right-three"></div>
+            </div>
+        </div>
+    </div>
+    <!--宇宙背景-->
+    <div class="canvaszz"></div>
+    <canvas id="canvas"></canvas>
+</div>
+<script>
+
+    //宇宙特效
+    "use strict";
+    var canvas = document.getElementById('canvas'),
+        ctx = canvas.getContext('2d'),
+        w = canvas.width = window.innerWidth,
+        h = canvas.height = window.innerHeight,
+
+        hue = 217,
+        stars = [],
+        count = 0,
+        maxStars = 300;//星星数量
+
+    var canvas2 = document.createElement('canvas'),
+        ctx2 = canvas2.getContext('2d');
+    canvas2.width = 100;
+    canvas2.height = 100;
+    var half = canvas2.width / 2,
+        gradient2 = ctx2.createRadialGradient(half, half, 0, half, half, half);
+    gradient2.addColorStop(0.025, '#CCC');
+    gradient2.addColorStop(0.1, 'hsl(' + hue + ', 61%, 33%)');
+    gradient2.addColorStop(0.25, 'hsl(' + hue + ', 64%, 6%)');
+    gradient2.addColorStop(1, 'transparent');
+
+    ctx2.fillStyle = gradient2;
+    ctx2.beginPath();
+    ctx2.arc(half, half, half, 0, Math.PI * 2);
+    ctx2.fill();
+
+    // End cache
+
+    function random(min, max) {
+        if (arguments.length < 2) {
+            max = min;
+            min = 0;
+        }
+
+        if (min > max) {
+            var hold = max;
+            max = min;
+            min = hold;
+        }
+
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function maxOrbit(x, y) {
+        var max = Math.max(x, y),
+            diameter = Math.round(Math.sqrt(max * max + max * max));
+        return diameter / 2;
+        //星星移动范围，值越大范围越小，
+    }
+
+    var Star = function () {
+
+        this.orbitRadius = random(maxOrbit(w, h));
+        this.radius = random(60, this.orbitRadius) / 8;
+        //星星大小
+        this.orbitX = w / 2;
+        this.orbitY = h / 2;
+        this.timePassed = random(0, maxStars);
+        this.speed = random(this.orbitRadius) / 500000;
+        //星星移动速度
+        this.alpha = random(2, 10) / 10;
+
+        count++;
+        stars[count] = this;
+    }
+
+    Star.prototype.draw = function () {
+        var x = Math.sin(this.timePassed) * this.orbitRadius + this.orbitX,
+            y = Math.cos(this.timePassed) * this.orbitRadius + this.orbitY,
+            twinkle = random(10);
+
+        if (twinkle === 1 && this.alpha > 0) {
+            this.alpha -= 0.05;
+        } else if (twinkle === 2 && this.alpha < 1) {
+            this.alpha += 0.05;
+        }
+
+        ctx.globalAlpha = this.alpha;
+        ctx.drawImage(canvas2, x - this.radius / 2, y - this.radius / 2, this.radius, this.radius);
+        this.timePassed += this.speed;
+    }
+
+    for (var i = 0; i < maxStars; i++) {
+        new Star();
+    }
+
+    function animation() {
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.globalAlpha = 0.5; //尾巴
+        ctx.fillStyle = 'hsla(' + hue + ', 64%, 6%, 2)';
+        ctx.fillRect(0, 0, w, h);
+
+        ctx.globalCompositeOperation = 'lighter';
+        for (var i = 1, l = stars.length; i < l; i++) {
+            stars[i].draw();
+        }
+        ;
+        window.requestAnimationFrame(animation);
+    }
+
+    animation();
+
+
+</script>
+<script src="js/jquery.min.js" type="text/javascript"></script>
+<script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="./bower_components/echarts/dist/echarts.min.js"></script>
+<script src="./bower_components/layerBs/2.4/layer.js"></script>
+<!--宁夏地图-->
+<script src="http://gallery.echartsjs.com/dep/echarts/map/js/province/ningxia.js"></script>
+<!--水球图-->
+<script src="./bower_components/echarts/dist/echarts-liquidfill.js"></script>
+<!-- 主体js -->
+<script src="./js/index_a.js"></script>
+<script>
+    $('.chooseCharts').on('click', function () {
+        layer.open({
+            type: 2,
+            title: '',
+            maxmin: true,
+            shadeClose: true, //点击遮罩关闭层
+            area: ['900px', '700px'],
+            content: 'choose_charts.html'
+        });
+    });
+</script>
+</body>
+</html>
