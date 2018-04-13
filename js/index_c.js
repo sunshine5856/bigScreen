@@ -7,12 +7,6 @@
 var border_color = 'rgba(81,110,122,0.8)';//图标辅助线颜色
 var text_color = '#b8b8b9';//辅助字体颜色
 var background_color = 'rgba(0,193,222,0.5)';//提示框背景颜色
-var lineStyle = {
-    normal: {
-        width: 1,
-        opacity: 0.5
-    }
-};
 $(function () {
     /******************************假数据************************************************************/
         //  地图旁边的柱图
@@ -573,7 +567,7 @@ $(function () {
                 itemStyle: {
                     normal: {
                         shadowBlur: 30,
-                        shadowColor: 'rgba(0, 0, 0, 0.4)'
+                        shadowColor: text_color
                     }
                 },
 
